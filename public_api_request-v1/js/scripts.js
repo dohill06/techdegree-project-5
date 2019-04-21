@@ -14,17 +14,17 @@ function employeeCard(employees) {
         employeeArray.push(card)
 
         gallery.innerHTML += employeeDiv(
-                                card.picture.large,
-                                card.name.first,
-                                card.name.last,
-                                card.email,
-                                card.location.city,
-                                card.phone,
-                                card.location.street,
-                                card.location.state, 
-                                card.location.postcode, 
-                                card.dob.date
-                            );
+            card.picture.large,
+            card.name.first,
+            card.name.last,
+            card.email,
+            card.location.city,
+            card.phone,
+            card.location.street,
+            card.location.state,
+            card.location.postcode,
+            card.dob.date
+        );
 
     })
     console.log(employeeArray);
@@ -67,7 +67,7 @@ function employeeDiv(pic, firstName, lastName, email, city, phone, street, state
                         <p class="modal-text cap">${city}</p>
                         <hr>
                         <p class="modal-text">${phone}</p>
-                        <p class="modal-text cap">${street}, ${state}, ${zip}</p>
+                        <p class="modal-text cap">${street}, ${state} ${zip}</p>
                         <p class="modal-text">Birthday: ${birthday}</p>
                     </div>
                 </div>
