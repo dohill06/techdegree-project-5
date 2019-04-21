@@ -144,4 +144,5 @@ reset.addEventListener('click', () => {
     names.forEach(name => {
         name.parentElement.style.display = '';
     })
+    reset.style.display = 'none';
 });
