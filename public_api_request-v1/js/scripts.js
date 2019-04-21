@@ -45,7 +45,7 @@ function employeeCard(employees) {
 
     modalToggle.forEach(toggle => {
         toggle.addEventListener('click', (e) => {
-            console.log(e.target);
+
             if (e.target.className == 'modal-next btn' && toggle.parentElement.parentElement.lastElementChild.style.display == 'none') {
                 toggle.parentElement.style.display = 'none';
                 toggle.parentElement.nextElementSibling.nextElementSibling.style.display = '';
@@ -57,7 +57,7 @@ function employeeCard(employees) {
             if (e.target.className == 'modal-prev btn' && toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display == 'none') {
                 toggle.parentElement.style.display = 'none';
                 toggle.parentElement.previousElementSibling.previousElementSibling.style.display = '';
-             } else if (e.target.className == 'modal-prev btn' && toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display == '') {
+            } else if (e.target.className == 'modal-prev btn' && toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display == '') {
                 toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = 'none'
                 toggle.parentElement.parentElement.lastElementChild.style.display = '';
             }
