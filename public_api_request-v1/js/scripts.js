@@ -125,6 +125,7 @@ searchDiv.innerHTML = searchBar();
 const form = document.querySelector('form');
 let input = document.querySelector('#search-input');
 const reset = document.querySelector('#reset');
+const header1 = document.querySelector('h1');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -133,6 +134,7 @@ form.addEventListener('submit', (e) => {
     names.forEach(name => {
         if (name.firstElementChild.textContent.includes(userInput) == false) {
             name.parentElement.style.display = 'none';
+            header1.style.color = 'tomato';
             input.value = '';
             reset.style.display = '';
         }
@@ -144,5 +146,6 @@ reset.addEventListener('click', () => {
     names.forEach(name => {
         name.parentElement.style.display = '';
     })
+    header1.style.color = '';
     reset.style.display = 'none';
 });
