@@ -27,18 +27,21 @@ function employeeCard(employees) {
         );
 
     })
-    console.log(employeeArray);
 
     const cards = document.querySelectorAll('.card');
-    const modalContainer = document.querySelectorAll('.modal-container');
+    const modalBtn = document.querySelectorAll('#modal-close-btn');
     cards.forEach(card => {
         card.addEventListener('click', () => {
-            if (card) {
-                card.nextElementSibling.style.display = '';
-            }
+            card.nextElementSibling.style.display = '';
         })
     })
-    // console.log(employees);
+
+    modalBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.parentElement.parentElement.style.display = 'none';
+        })
+    })
+
 }
 
 function employeeDiv(pic, firstName, lastName, email, city, phone, street, state, zip, dob) {
