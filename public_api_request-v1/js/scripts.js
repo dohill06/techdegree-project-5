@@ -30,6 +30,7 @@ function employeeCard(employees) {
 
     const cards = document.querySelectorAll('.card');
     const modalBtn = document.querySelectorAll('#modal-close-btn');
+    const modalToggle = document.querySelectorAll('.modal-btn-container');
     cards.forEach(card => {
         card.addEventListener('click', () => {
             card.nextElementSibling.style.display = '';
@@ -39,6 +40,28 @@ function employeeCard(employees) {
     modalBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             btn.parentElement.parentElement.style.display = 'none';
+        })
+    })
+
+    modalToggle.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            console.log(e.target);
+            if (e.target.className == 'modal-next btn' && toggle.parentElement.parentElement.lastElementChild.style.display == 'none') {
+                toggle.parentElement.style.display = 'none';
+                toggle.parentElement.nextElementSibling.nextElementSibling.style.display = '';
+            } else if (e.target.className == 'modal-next btn' && toggle.parentElement.parentElement.lastElementChild.style.display == '') {
+                toggle.parentElement.parentElement.lastElementChild.style.display = 'none'
+                toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = '';
+            }
+
+            if (e.target.className == 'modal-prev btn' && toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display == 'none') {
+                toggle.parentElement.style.display = 'none';
+                toggle.parentElement.previousElementSibling.previousElementSibling.style.display = '';
+             } else if (e.target.className == 'modal-prev btn' && toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display == '') {
+                toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = 'none'
+                toggle.parentElement.parentElement.lastElementChild.style.display = '';
+            }
+
         })
     })
 
