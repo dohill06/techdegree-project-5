@@ -1,12 +1,16 @@
+// Set up global variables
+
 const gallery = document.querySelector('#gallery');
 const searchDiv = document.querySelector('.search-container');
 
+// Set up fetch request 
 
 fetch('https://randomuser.me/api/?results=12&nat=us')
     .then(response => response.json())
     .then(data => employeeCard(data.results))
 
-
+// Function takes data from fetch request and adds gallery 
+// and functional modal window to the DOM
 
 function employeeCard(employees) {
 
@@ -66,6 +70,7 @@ function employeeCard(employees) {
 
 }
 
+// Builds employee cards
 
 function employeeDiv(pic, firstName, lastName, email, city, phone, street, state, zip, dob) {
     let bday = dob.slice(0, 10);
@@ -108,6 +113,8 @@ function employeeDiv(pic, firstName, lastName, email, city, phone, street, state
     return employee;
 }
 
+// Builds search bar
+
 function searchBar() {
     const search = `
             <form action="#" method="get">
@@ -120,12 +127,18 @@ function searchBar() {
     return search;
 }
 
+// Adds search bar to the DOM
+
 searchDiv.innerHTML = searchBar();
+
+// Search bar variables
 
 const form = document.querySelector('form');
 let input = document.querySelector('#search-input');
 const reset = document.querySelector('#reset');
 const header1 = document.querySelector('h1');
+
+// Search bar event listener
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -140,6 +153,8 @@ form.addEventListener('submit', (e) => {
         }
     })
 });
+
+// Reset button event listener
 
 reset.addEventListener('click', () => {
     const names = document.querySelectorAll('.card-info-container');
