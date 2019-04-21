@@ -1,4 +1,5 @@
 const gallery = document.querySelector('#gallery');
+const searchDiv = document.querySelector('.search-container');
 
 
 fetch('https://randomuser.me/api/?results=12&nat=us')
@@ -65,6 +66,7 @@ function employeeCard(employees) {
 
 }
 
+
 function employeeDiv(pic, firstName, lastName, email, city, phone, street, state, zip, dob) {
     let bday = dob.slice(0, 10);
     const reg = /(\d+)-(\d+)-(\d+)/;
@@ -105,3 +107,16 @@ function employeeDiv(pic, firstName, lastName, email, city, phone, street, state
 
     return employee;
 }
+
+function searchBar() {
+    const search = `
+            <form action="#" method="get">
+                <input type="search" id="search-input" class="search-input" placeholder="Search...">
+                <input type="submit" value="&#x1F50D;" id="serach-submit" class="search-submit">
+            </form>
+            `;
+
+    return search;
+}
+
+searchDiv.innerHTML = searchBar();
