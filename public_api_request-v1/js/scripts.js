@@ -9,10 +9,8 @@ fetch('https://randomuser.me/api/?results=12&nat=us')
 
 
 function employeeCard(employees) {
-    
-    employees.forEach(card => {
 
-        
+    employees.forEach(card => {
         employeeArray.push(card)
 
         // let employee = `
@@ -48,8 +46,8 @@ function employeeCard(employees) {
         //     </div>
         // </div>
         // `
-        // gallery.innerHTML += employee;
-        
+        gallery.innerHTML += employeeDiv(card.picture.large, card.name.first, card.name.last, card.email, card.location.city);
+
     })
     console.log(employeeArray);
 
@@ -58,9 +56,26 @@ function employeeCard(employees) {
     cards.forEach(card => {
         card.addEventListener('click', () => {
             if (card) {
-               card.nextElementSibling.style.display = '';
+                card.nextElementSibling.style.display = '';
             }
         })
     })
     // console.log(employees);
+}
+
+function employeeDiv(pic, firstName, lastName, email, city) {
+    let employee = `
+            <div class="card">
+                <div class="card-img-container">
+                    <img class="card-img" src="${pic}" alt="profile picture">
+                </div>
+                <div class="card-info-container">
+                    <h3 id="name" class="card-name cap">${firstName} ${lastName}</h3>
+                    <p class="card-text">${email}</p>
+                    <p class="card-text cap">${city}</p>
+                </div>
+            </div>
+            `;
+
+    return employee;
 }
