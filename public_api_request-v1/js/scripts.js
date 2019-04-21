@@ -46,7 +46,7 @@ function employeeCard(employees) {
         //     </div>
         // </div>
         // `
-        gallery.innerHTML += employeeDiv(card.picture.large, card.name.first, card.name.last, card.email, card.location.city);
+        gallery.innerHTML += employeeDiv(card.picture.large, card.name.first, card.name.last, card.email, card.location.city, card.phone, card.location.street, card.location.state, card.location.postcode, card.dob.date);
 
     })
     console.log(employeeArray);
@@ -63,7 +63,10 @@ function employeeCard(employees) {
     // console.log(employees);
 }
 
-function employeeDiv(pic, firstName, lastName, email, city) {
+function employeeDiv(pic, firstName, lastName, email, city, phone, street, state, zip, dob) {
+    let bday = dob.slice(0, 10);
+    const reg = /(\d+)-(\d+)-(\d+)/;
+    let birthday = bday.replace(reg, '$2/$3/$1');
     let employee = `
             <div class="card">
                 <div class="card-img-container">
@@ -75,7 +78,28 @@ function employeeDiv(pic, firstName, lastName, email, city) {
                     <p class="card-text cap">${city}</p>
                 </div>
             </div>
-            `;
+
+            <div class="modal-container" style="display:none">
+                <div class="modal">
+                    <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
+                    <div class="modal-info-container">
+                        <img class="modal-img" src="${pic}" alt="profile picture">
+                        <h3 id="name" class="modal-name cap">${firstName} ${lastName}</h3>
+                        <p class="modal-text">${email}</p>
+                        <p class="modal-text cap">${city}</p>
+                        <hr>
+                        <p class="modal-text">${phone}</p>
+                        <p class="modal-text cap">${street}, ${state}, ${zip}</p>
+                        <p class="modal-text">Birthday: ${birthday}</p>
+                    </div>
+                </div>
+
+                <div class="modal-btn-container">
+                    <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
+                    <button type="button" id="modal-next" class="modal-next btn">Next</button>
+                </div>
+            </div>
+            `
 
     return employee;
 }
