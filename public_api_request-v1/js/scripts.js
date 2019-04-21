@@ -113,6 +113,7 @@ function searchBar() {
             <form action="#" method="get">
                 <input type="search" id="search-input" class="search-input" placeholder="Search...">
                 <input type="submit" value="&#x1F50D;" id="serach-submit" class="search-submit">
+                <button type="button" id="reset" style="display:none">Reset</button>
             </form>
             `;
 
@@ -120,3 +121,27 @@ function searchBar() {
 }
 
 searchDiv.innerHTML = searchBar();
+
+const form = document.querySelector('form');
+let input = document.querySelector('#search-input');
+const reset = document.querySelector('#reset');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const names = document.querySelectorAll('.card-info-container');
+    let userInput = input.value.toLowerCase();
+    names.forEach(name => {
+        if (name.firstElementChild.textContent.includes(userInput) == false) {
+            name.parentElement.style.display = 'none';
+            input.value = '';
+            reset.style.display = '';
+        }
+    })
+});
+
+reset.addEventListener('click', () => {
+    const names = document.querySelectorAll('.card-info-container');
+    names.forEach(name => {
+        name.parentElement.style.display = '';
+    })
+});
