@@ -1,5 +1,4 @@
 const gallery = document.querySelector('#gallery');
-let employeeArray = [];
 
 
 fetch('https://randomuser.me/api/?results=12&nat=us')
@@ -11,7 +10,6 @@ fetch('https://randomuser.me/api/?results=12&nat=us')
 function employeeCard(employees) {
 
     employees.forEach(card => {
-        employeeArray.push(card)
 
         gallery.innerHTML += employeeDiv(
             card.picture.large,
@@ -34,13 +32,13 @@ function employeeCard(employees) {
     cards.forEach(card => {
         card.addEventListener('click', () => {
             card.nextElementSibling.style.display = '';
-        })
+        });
     })
 
     modalBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             btn.parentElement.parentElement.style.display = 'none';
-        })
+        });
     })
 
     modalToggle.forEach(toggle => {
@@ -50,7 +48,7 @@ function employeeCard(employees) {
                 toggle.parentElement.style.display = 'none';
                 toggle.parentElement.nextElementSibling.nextElementSibling.style.display = '';
             } else if (e.target.className == 'modal-next btn' && toggle.parentElement.parentElement.lastElementChild.style.display == '') {
-                toggle.parentElement.parentElement.lastElementChild.style.display = 'none'
+                toggle.parentElement.parentElement.lastElementChild.style.display = 'none';
                 toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = '';
             }
 
@@ -58,11 +56,11 @@ function employeeCard(employees) {
                 toggle.parentElement.style.display = 'none';
                 toggle.parentElement.previousElementSibling.previousElementSibling.style.display = '';
             } else if (e.target.className == 'modal-prev btn' && toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display == '') {
-                toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = 'none'
+                toggle.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = 'none';
                 toggle.parentElement.parentElement.lastElementChild.style.display = '';
             }
 
-        })
+        });
     })
 
 }
